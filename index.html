@@ -152,6 +152,80 @@
 
       <div class="body-wrap">
   
+    <article id="post-基于立方体纹理空间的局部反射" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/29/基于立方体纹理空间的局部反射/" class="article-date">
+  	<time datetime="2016-07-29T06:30:52.000Z" itemprop="datePublished">2016-07-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/29/基于立方体纹理空间的局部反射/">基于立方体纹理空间的局部反射(原创技术分享)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这算是自己写的第一篇比较正式的技术文档，难得抽出时间，因为平时实在太忙太忙，没有多少闲暇可以安心的写文章。<br>希望这篇文章对你有所帮助，另外转载的时候请注明出自此处^_^。</p>
+<p>先附上在自己引擎里渲染的截图:<br><a href="http://www.yupoo.com/photos/levelupjun/96287303/" title="fanshe3" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FJCJ1NVH/TZbun.png" alt="fanshe3" width="711" height="635" border="0"></a></p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96287302/" title="fanshe2" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FJCJ0Xmq/fPNcW.png" alt="fanshe2" width="852" height="427" border="0"></a></p>
+<h1 id="基于立方体纹理的环境反射通常有两种-：-，"><a href="#基于立方体纹理的环境反射通常有两种-：-，" class="headerlink" title="基于立方体纹理的环境反射通常有两种 ：#，"></a>基于立方体纹理的环境反射通常有两种 ：#，</h1><p>第一种：物体表面只能反射无限远的场景图像，比如反射天空盒和远景之类，这类只用根据视点的反射向量直接去采样cubemap即可得到反射颜色，比如 reflect_color = (texCUBE(cubemap, reflect_dir)),reflect_dir为反射向量.<br>第二种.根据视点的反射向量计算 与cubemap纹理空间的交点，以此交点作为采样点并得到反射颜色,这种算法可以在局部空间内反射局部物体，更加准确灵活，比如在室内环境中会有更真实的反射效果。<br>此篇文章主要详解第二种方案。</p>
+<p>基于立方体纹理的局部反射流程如下：<br>1.以场景某个坐标点为cubemap中心，然后以此中心为视点，把场景渲染进cubemap的六个纹理面里。<br>2.把场景所有物体从世界空间转换至 以cubemap中心为原点的坐标空间。<br>3.在pixelshader处理阶段，求每个像素的基于视点的反射向量，再以该反射向量作为射线，求此射线与 cubemap中心为球心,半径为R的球体相交 的两个交点。<br>4.根据交点，计算出最终的向量vFinal，然后再用vFinal 对cubemap纹理进行采样，最终得到反射像素的颜色。</p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96287304/" title="1" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FJCJ1XuW/6yvEF.png" alt="1" width="512" height="512" border="0"></a></p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96287305/" title="2" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FJCJ25Lu/HoLxq.png" alt="2" width="512" height="512" border="0"></a></p>
+<p>EyePoint:当前视点，<br>sPoint:当前渲染的物体表面某个点，<br>CubemapCenter:立方体纹理空间的中心点,也是球体的球心，<br>vEye:视线方向向量,vEye = EyePoint-sPoint，<br>vNormal:当前绘制的物体表面某点的法向量，<br>vReflect:根据vEye和vNormal求得的反射向量，vReflect = -reflect(vEye, vNormal);(代码里的vReflect和上图里的vReflect是反向的)<br>t0Point、t1Point: 以sPoint为起点，以vReflect为方向的射线，此射线与球体相交的两个交点，<br>vFinal:从立方体纹理空间中 采样最终反射颜色的向量 ，vFinal = t0Point-CubeMapCenter;</p>
+<p>射线与球体的相交检测公式为：<br>t0 = -(b + √Δ) / 2a<br>t1 = -(b - √Δ) / 2a<br>a = D·D = dot(D, D) = 1;<br>b = 2·OC·D = 2·dot(OC, D);<br>c = OC·OC - R·R = dot(OC, OC) - R·R;<br>判别式 Δ = sqr(b) - 4ac = 4·sqr( OC·D ) - 4·( OC·OC - R·R ) = 4·( sqr( OC·D ) - OC·OC + R·R );<br>如果判别式 Δ &gt; 0，则表明球与射线相交。<br>根据以上方程，我们其中试着展开 t 的式子<br>t0 = -(b + √Δ) / 2a = -(b + √Δ) / 2·1<br>= -b/2 - √(Δ/4)<br>= -dot(OC, D) - √( sqr( dot(OC, D) ) - dot(OC, OC) + R·R )</p>
+<p>O=射线的起点，这里为图中的sPoint，<br>C=球体的球心，这里为图中的CubeMapCenter，<br>D=射线的方向向量，这里为图中的vReflect，<br>R=球体的半径，这个半径的长度要结合具体的场景大小自定义，R的大小与场景的尺度越契合，计算的反射就越精确。<br>t0、t1分别为D射线与球体相交的两个交点，这里为图中的t1Point、t0Point。</p>
+<p>射线与球体相交的详细推导过程和代码可以看这里:<a href="http://www.jianshu.com/p/1b008ed86627" target="_blank" rel="external">http://www.jianshu.com/p/1b008ed86627</a></p>
+<p>以下为cubemap环境反射的hlsl代码:</p>
+<p>float4x4 g_mWorld;//当前所绘制模型的世界矩阵<br>float4x4 g_mCubeMap; //把当前模型从世界空间转换至立方体纹理空间的矩阵<br>//g_mCubeMap=g_mInvCubeWorld，g_mInvCubeWorld为g_mCubeWorld的逆矩阵,g_mCubeWorld为立方体纹理中心在场景中的世界矩阵。</p>
+<p>float3 EyePoint;//世界空间下的视点坐标 (也就是当前摄像机的位置)<br>samplerCUBE g_txEvn;//已经存储场景像素的立方体纹理<br>float4 ReflectPixelShader(INPUT input) : COLOR0<br>{<br>float4 sPoint = mul(float4(input.cur_pixel_pos.xyz,1.0f), g_mWorld);<br>float3 vEye = normalize(EyePoint-sPoint);<br>sPoint = mul(sPoint, g_mCubeMap);<br>float3 vNormal = normalize(input.Normal);</p>
+<p>float R = 750.0f;//这里的半径可以自定义，只要契合当前渲染的环境的尺寸即可<br>float3 reflVect = -normalize(reflect(vEye,vNormal));<br>float b =  dot(reflVect, sPoint.xyz);<br>float c = dot(sPoint.xyz, sPoint.xyz)-R<em>R;<br>float discrim = b</em>b - c;<br>bool hasIntersects = false;<br>float nearT = 0;<br>float nearT2 = 0;<br>float3 reflect_color=0;//最终要计算的反射颜色<br>float3 t0Point;<br>if (discrim&gt;0)<br>{<br>discrim = sqrt(discrim);<br>nearT = -b-discrim;//计算sPoint点到t0Point点的距离<br>nearT2 = -b+discrim;//计算sPoint点到t1Point点的距离<br>hasIntersects = true;</p>
+<p>if (nearT&lt;=0.0001f)//如果没有t1Point交点 就求t0Point交点 这种一般是sPoint在球体内部的情况<br>{<br>nearT = nearT2;<br>hasIntersects=(nearT&gt;0.0001f);<br>}<br>}<br>if (hasIntersects)//反射射线与球体至少有一个交点 才能求出cubemap空间中的反射采样点<br>{<br>t0Point = sPoint+nearT*reflVect;<br>float3 vFinal = t0Point-float3(0,0,0);//求出最终的反射采样向量，立方体中心为原点，所以CubeMapCenter直接为(0,0,0)<br>reflect_color = texCUBE(g_txEvn,vFinal).rgb;//从cubemap中采样出最终的反射颜色<br>}<br>return float4(reflect_color.rgb,1.0f);//此反射颜色 还要与物体的纹理颜色进行混合,这里只计算反射，省去了光照和纹理颜色相关的代码<br>}</p>
+<p>为什么立方体纹理要用球体做反射检测，因为球体近似于立方体，所以适合用于立方体纹理的相交检测，虽然有误差但是可以接受。<br>其实也可以把球体换成正方体，不过检测指令会更多，要检测射线与平面，所以相当于射线与6*2=12个三角面的相交检测，效率比球体低的多。<br>这种方案的环境反射，对于cubemap空间范围内的静态物体 不用每帧去绘制cubemap，所以效率很高，而且反射信息带有阴影和光照。<br>但是这种环境反射毕竟只是用cubemap模拟，所以还是存在较大误差，并没有Scene Space Reflection(SSR，屏幕空间反射)准确，所以要与SSR配合使用。</p>
+<p>关于该环境反射的详细资料也可以去查阅GPU Gems1 的第19章(Image-Based)，这里不建议看中文版，因为这本书的译者也没能很好的理解原文，所以看中文版对你的帮助可能会很小。</p>
+<p> 要做一篇严谨的技术分享其实很辛苦，需要严谨画图，并对文字和代码进行严谨的核对，所以那些认真做技术分享的人都应该被尊重和感谢，我们的成长和积累都离不开每一个乐于分享的人的帮助。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+  
     <article id="post-羽翼引擎的功能介绍" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
