@@ -152,6 +152,71 @@
 
       <div class="body-wrap">
   
+    <article id="post-关于二次元风格的渲染" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/14/关于二次元风格的渲染/" class="article-date">
+  	<time datetime="2017-01-13T23:20:42.000Z" itemprop="datePublished">2017-01-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/14/关于二次元风格的渲染/">关于二次元风格的渲染</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>改进的效果如下：</p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96733181/" title="ton3" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/G9kOyJj6/kNmoS.png" alt="ton3" width="557" height="496" border="0"></a></p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96733179/" title="ton1" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/G9kOxobm/VKxfA.png" alt="ton1" width="659" height="413" border="0"></a></p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96733180/" title="ton2" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/G9kOy26O/IWiQI.png" alt="ton2" width="601" height="410" border="0"></a></p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/96733182/" title="ton4" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/G9kOzsCc/l2GR2.png" alt="ton4" width="600" height="470" border="0"></a></p>
+<p>二次元的的风格 一般是 明暗过度强烈，低饱和度，暗色和阴影色都有一定亮度（再暗也不会暗到死黑的程度），线条分明，色调偏暖等等。</p>
+<p>这里说下 3D图形中如何渲染 模型描边(线条感)的 技术方案<br>这里我只说 主流的三种方案：<br>1.扩大模型轮廓，渲染两遍PASS进行叠加的方案，这种方案都优点就是描边的粗细可调整，边缘的效果也比较好。但缺点也很明显，对模型轮廓内部的线条无能为力。性能方面，因为需要对每个模型进行两遍pass，会导致dpi数过高，而且对像素填充率也有一定压力。<br>所以这种方案通常适合用在 绘制角色的描边上。</p>
+<p>2.根据模型的几何信息来生存描边模型，核心的做法是先离线预先遍历模型的每个面，找出共面夹角超过一定阈值的线段，然后把这些线段转化成模型并存储在文件里，在实际的渲染中绘制出来。<br>这种方案的优点是，模型轮廓以内的线条也能绘制出来，绘制线段模型几乎不费任何像素填充率，线条粗细可以调整，效果也比较好，性能和效果都比第一种方案要好。<br>缺点是：需要离线预生成线段模型的时间，所以对于开发工作流来讲会比较费时点，对于动画模型不太适用，只适合静态模型，所以这种方案适合场景，但不适合角色。</p>
+<p>3.图像处理的方式(我目前所采用的)，基于延迟渲染，根据屏幕法线和深度纹理提供的信息，来找出边缘的像素，这种方案效果也是最好的，也是最灵活的方案，<br>优点就是 整个场景无论动态静态所有的线条都能很好的绘制出来。<br>当然也有缺点：性能上会比较有压力，因为这是相当于在pixelshader阶段做一次查找边缘的运算耗费。</p>
+<p>以上三种方案，其实每一个都不可替代，合适的环境选择合适的技术方案总是最优的做法。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+  
     <article id="post-最近看的几部日影" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -711,74 +776,6 @@
 
 
   
-    <article id="post-羽翼游戏引擎" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/29/羽翼游戏引擎/" class="article-date">
-  	<time datetime="2016-02-29T08:11:29.000Z" itemprop="datePublished">2016-02-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/29/羽翼游戏引擎/">羽翼游戏引擎</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开发这个游戏引擎，用尽了我两年多的时间，编写了总计约13万行代码，接近700个文件，能做到现在这个样子，已经是一种很大的欣慰，至少已经快完成到可以给人使用的程度。<br>羽翼引擎不仅能制作3D游戏，还可以当作MMD来制作动画，还能制作galgame。<br>届时可能会以正版购买的方式登陆于steam并提供下载，希望它能帮助爱好者还是开发者更好的创造并具现自己的内心世界。</p>
-<p><a href="http://www.yupoo.com/photos/levelupjun/95661643/" title="2" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FmFxRZgu/k5bzS.png" alt="羽翼游戏引擎" width="1274" height="913" border="0"></a></p>
-<p><a href="http://www.yupoo.com/photos/levelupjun/95661644/" title="3" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FmFxUyq4/14z2FI.png" alt="羽翼游戏引擎" width="1541" height="600" border="0"></a></p>
-<p><a href="http://www.yupoo.com/photos/levelupjun/95661645/" title="4" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FmFxYtDo/IUFZp.png" alt="羽翼游戏引擎" width="1545" height="886" border="0"></a></p>
-<p><a href="http://www.yupoo.com/photos/levelupjun/95661646/" title="5" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/FmFy0fQx/MYZA1.png" alt="羽翼游戏引擎" width="1546" height="882" border="0"></a></p>
-<p>顺便贴上羽翼引擎2015的视频</p>
-<iframe height="720" width="1080" src="http://player.youku.com/embed/XMTU0NDUzMzc4OA==" frameborder="0" allowfullscreen></iframe>
-
-<p>优酷地址:<br><a href="http://v.youku.com/v_show/id_XMTU0NDUzMzc4OA==.html?from=s1.8-1-1.2#paction" target="_blank" rel="external">http://v.youku.com/v_show/id_XMTU0NDUzMzc4OA==.html?from=s1.8-1-1.2#paction</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WingEngine/">WingEngine</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
- 
- 
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -789,7 +786,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 升级君	
+    		&copy; 2017 升级君	
 		</div>
 
       	<div class="footer-right">
