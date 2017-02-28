@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>游戏里的HRD技术 | 升级君</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天心血来潮，特意想写一篇关于HDR技术的分享———。———。希望能对一些新人能有所帮助，关于详细的图文和代码我之后会补上(微笑)。
+HDR 英文全称 High Dynamic Range Imaging 中文名 高动态范围成像，这种技术可以表现 更宽泛的明暗范围(亮度值远超过 0-255这个有限的整数区间)
+普通显示器一般属于LDR(低动态范围成像)，我们平时用的液晶显示器的亮度范围通常是0-2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏里的HRD技术">
+<meta property="og:url" content="http://yoursite.com/2017/02/28/游戏里的HRD技术/index.html">
+<meta property="og:site_name" content="升级君">
+<meta property="og:description" content="今天心血来潮，特意想写一篇关于HDR技术的分享———。———。希望能对一些新人能有所帮助，关于详细的图文和代码我之后会补上(微笑)。
+HDR 英文全称 High Dynamic Range Imaging 中文名 高动态范围成像，这种技术可以表现 更宽泛的明暗范围(亮度值远超过 0-255这个有限的整数区间)
+普通显示器一般属于LDR(低动态范围成像)，我们平时用的液晶显示器的亮度范围通常是0-2">
+<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GgaLQMi7/medish.jpg">
+<meta property="og:updated_time" content="2017-02-28T14:05:44.356Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="游戏里的HRD技术">
+<meta name="twitter:description" content="今天心血来潮，特意想写一篇关于HDR技术的分享———。———。希望能对一些新人能有所帮助，关于详细的图文和代码我之后会补上(微笑)。
+HDR 英文全称 High Dynamic Range Imaging 中文名 高动态范围成像，这种技术可以表现 更宽泛的明暗范围(亮度值远超过 0-255这个有限的整数区间)
+普通显示器一般属于LDR(低动态范围成像)，我们平时用的液晶显示器的亮度范围通常是0-2">
+  
+    <link rel="alternative" href="/atom.xml" title="升级君" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww3.sinaimg.cn/thumbnail/006ifKXZgw1f1e1i1z14oj308r08q755.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">升级君</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">一名奇葩的游戏制作人</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5766526503" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">升级君</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww3.sinaimg.cn/thumbnail/006ifKXZgw1f1e1i1z14oj308r08q755.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">升级君</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">一名奇葩的游戏制作人</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5766526503" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-游戏里的HRD技术" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/28/游戏里的HRD技术/" class="article-date">
+  	<time datetime="2017-02-28T13:59:11.000Z" itemprop="datePublished">2017-02-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      游戏里的HRD技术
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天心血来潮，特意想写一篇关于HDR技术的分享———。———。<br>希望能对一些新人能有所帮助，关于详细的图文和代码我之后会补上(微笑)。</p>
+<p>HDR 英文全称 High Dynamic Range Imaging 中文名 高动态范围成像，这种技术可以表现 更宽泛的明暗范围(<br>亮度值远超过 0-255这个有限的整数区间)</p>
+<p>普通显示器一般属于LDR(低动态范围成像)，我们平时用的液晶显示器的亮度范围通常是0-255,<br>而对应普通图形渲染程序中的 后台颜色缓存格式 通常是 A8R8G8B8，因为每个颜色分量值只有八位，所以亮度范围不可能超过255.</p>
+<p>那HDR对于游戏中的真正存在意义是什么？<br>普通显示器只能表示0-255的亮度范围，游戏里所有超过1.0的像素统统被裁减成1.0，所以这里就有个很严重的<br>问题，比如 在游戏里的某个场景有两个区域，一块区域是大白天的室外，另一块区域是昏暗的室内，而玩家会<br>经常在这两个区域里无缝切换，所以问题就来了，<br>大家平时自己也会察觉到一种现象，在白天当你在屋内的时候，会感觉窗外的东西都显得特别亮，而屋内亮度<br>却感到适中，但当你走出屋外，看屋内的时候，你又会发现屋外又不显得那么亮了，但对面的屋内的物体却变暗了。</p>
+<p>这就是一种人眼瞳孔对周围光线射入量进行的一种自适应调节，当你在屋外的时候，射入到人眼中的光线会更<br>多，所以瞳孔适当的缩小，减少光线的摄入，这个时候你会感觉屋外不那么亮了。当你在屋内的时候，由于周<br>围的光线量减少，所以你的瞳孔会增大，这样就可以吸收更多的光线，这个时候你会觉得屋内也不那么暗了。</p>
+<p>同理在游戏里也是一样，当玩家在昏暗的区域和明亮的区域来回切换时，也需要有这样一种变化，比如游戏场<br>景里从某个房间的窗外景色都是一片泛白，而当玩家走出房间，突然泛白的室外又渐渐的变暗并清晰了下来。</p>
+<p>从程序中来讲，其实当玩家在屋内的时候，窗外所有的模型包括天空盒等这些对应像素的亮度大部分都超过了<br>1.0f，而室内这个时候模型的像素亮度大部分都在0-1.0之间(整数范围是0-255区间)。<br>现实中的太阳光照射下物体的亮度肯定远不止0-255这个整数范围，所以真正要表现实际的现实中的亮度范围，</p>
+<p>就需要让室外模型对应的像素亮度提升至 255以外(浮点就是远远大于1.0f这个上限)。<br>但遗憾的时候，普通的显示器，能绘制的最高亮度上限是1.0， 任何超过1.0的像素都会被直接裁剪成1.0，而<br>为1.0的像素亮度统一绘制成白色。</p>
+<p>所以在制作场景的时候，一个美工不可能把一个模型的材质亮度调到1.0以上，但在实际的游戏中，恰恰需要在<br>某些地方让模型的亮度远远大于1.0，但又能在昏暗的室内环境里，模型的亮度又能自动缩回到1.0以内，<br>所以游戏里才需要某种技术 可以表现出这个现实中具有的高亮度围的效果，</p>
+<p>那这个技术是什么，高动态范围光(HDR)，而HDR的实现在照相和游戏两个领域中是有一定差别的，<br>我这里只说游戏中的HDR实现<br>其实游戏里并不是要去真正的表现 高动态范围成像，因为游戏是实时渲染，考虑到性能成本，所以只能去模拟</p>
+<p>HDR的这种特性。<br>通常在美工制作场景的环节，每个模型的材质亮度属性都是预先设置后，在游戏中实时进行中是不会动态变化的。</p>
+<p>所以没有HDR的情况下，当玩家在屋内环境中，屋外的物体的像素亮度依然是1.0以内，所以本事阳光高照的场<br>景，屋外看起来依然很暗，而走出屋外的时候，屋外屋内的亮度都没有任何变化，并且屋内却依然很亮，这就明显的不真实。<br>所以游戏中要用HDR技术来实现明暗的动态变化，其中一个关键步骤就是 色调映射(Tonemapping)<br>，通常先计算出当前玩家所在区域像素的平均亮度，然后根据这个平均亮度对整个场景模型的像素亮度做动态调整，比如玩家在室内的环境里，整体亮度肯定偏暗(因为太阳直接光照少，间接光照多)，所以计算出来的平均亮度就比较低，然后再根据tonemapping公式把整体亮度动态上调，让暗的物体也变的亮起来，室外同理，这是不是和之前说的 人眼瞳孔为了适应周围额环境，进行放大缩小动态调节光线摄入量的原理很相似？恩是一样的。</p>
+<p>Tonemapp的数学公式通常为: l=Y/(Y+1),这个函数将场景在 (0-N) 范围的值 Y 映射到显示输出范围 (0-1)内的l<br>附代码如下:<br>final_color *= MIDDLE_GREY / lum;<br>final_color = src_color / (1.0f + src_color);<br>这里lum为当前帧中计算的全屏平均亮度，src_color为tonemapping之前的源像素颜色,而MIDDLE_GREY通常是一个可以自己调整的变量。<br>final_color是经过色调映射之后所要最终输出的颜色。</p>
+<p>所以HDR在游戏领域中的真正意义其实是 对场景明暗做动态调整，以模拟人眼对场景感光的调节特性，从而让<br>玩家感知更丰富的明暗变化，但从另外一个层面上看，这种模拟其实和 HDR的广义概念是同样的目的,都是为了<br>表达出更多的亮度范围，只不过游戏中的HDR只是一种简单的模拟，只是表面看上去像高动态范围的表现而已，<br>但照相和某些图片领域中的HDR却是一种更高成本的实现(比如HDR图片格式)可以做到更好的效果。两者目的一<br>样，但实现成本方法不一样。(另外游戏中的HDR，其实完全不需要用到浮点纹理)</p>
+<p>关于bloom<br>最后补充下，bloom和HDR完全是两个东西，bloom仅仅是表现泛光，在HDR的通常步骤中，往往一些做法是对超<br>出1.0的像素做bloom，这样可以更好的模拟高动态范围光的效果(比如站在屋内往屋外的景色看起来泛光一片)<br>，但我这里要说的是bloom是单独的一种技术，bloom可以表现在许多地方，实现许多丰富的效果，而并不仅仅<br>只为表现HDR，所以请把HDR与bloom区分开来。</p>
+<p>这个帖子我尽量用通俗的方式把HDR解释一遍，只希望对许多新人或对HDR不明所以的人有所帮助。<br>理论归理论，做归做，实际的做法却多种多样，理论和做永远是跨越几个层次的难度，所以这就是国内许多公<br>司看上去懂原理，但最后真正做出来的结果都很粗糙。</p>
+<p>这也是为什么国内网游在渲染上的表现 总是很不专业的原因。<br>这里附上一张 典型的国产网游的截图(剑网三)，<br><img src="http://pic.yupoo.com/levelupjun/GgaLQMi7/medish.jpg" alt=""><br>滥用bloom，不理解HDR和bloom之间的联系，不了解HDR对游戏的真正作用，最终导致的就是这种渲染结果。</p>
+<p>这里我还是要再补充一下 关于平时HDR技术的真正运用。<br>真正的HDR技术通常用在 照相摄影或图片相关的领域，比如一些摄影师利用HDR技术，通过拍摄多张曝光度不同的照片来合成制作HDR照片，让照片显得更清晰饱满。<br>因为HDR纹理存储了完整的亮度数据，每个像素单通道都是16-32位，这显然比8位纹理存储的数据更完整。<br>当然游戏中也可以使用HDR纹理，来实现真正的HDR渲染，但目前游戏里使用的并不多，不仅需要采集制作HDR纹理，还需要浮点纹理的支持。</p>
+<p>总结一下<br>HDR技术在照相渲染图片实现和运用的过程通常是：<br>1.通过相机采集并制作HDR纹理<br>2.对HDR纹理进行压缩，然后在实际渲染的时候进行解压<br>3.最后对解压后的HDR数据进行tonemapping，最终把HDR的32位浮点数据正确的转换至 普通显示器里的0-255亮度范围。这种真正HDR技术的目的是 能把采集好的完整的HDR纹理的亮度色彩，能在只有0-255亮度之内的普通显示设备上正确还原出来。</p>
+<p>HDR在游戏里的实现和运用过程通常是<br>1.计算全屏像素的平均亮度。<br>2.根据平均亮度，通过tonemapping公式对 原始像素颜色进行 转换<br>3.最终原始像素的颜色亮度被 转换到一个 合适的区间。<br>因为没有HDR纹理这种通过采集的完整亮度数据源，而只能简单模拟高动态范围亮度，所以最后经过tonemapping之后的亮度细节是有明显丢失的。因此游戏里的HDR技术的真正作用 更接近 动态调整明暗的目的。</p>
+<p>所以经常有人谈HDR，但许多人完全混淆了游戏里的HDR和实际真正的的HDR的作用和区别。</p>
+<p>这里再吐槽下，在游戏渲染中，没有HDR纹理作为真实数据源，即使用浮点纹理也没有多大意义，最后一样会被压缩成0-255，和8位target没有任何区别，该丢失的细节一样丢失(即使你如何改进tonemapping公式)，这就和没有PBR纹理但还是要用PBR渲染一样的没有意义。</p>
+<p>这篇文章写出来就是给真正想学习的人看。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/14/赌上自己的灵魂去做一件事才不愧对努力二字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">赌上自己的灵魂去做一件事才不愧对努力二字</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+ 
+ <section id="comments">
+<div class="duoshuo">
+   <!-- 多说评论框 start -->
+   <div class="ds-thread" data-thread-key="post-游戏里的HRD技术" data-title="游戏里的HRD技术" data-url="http://yoursite.com/2017/02/28/游戏里的HRD技术/"></div>
+  <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"levelupjun"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+ </section>
+ 
+ 
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 升级君	
+		</div>
+
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+		
+    </div>
+  </div>
+  
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+ <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?84d2446cc17417671ab44f9fc27114e4";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
