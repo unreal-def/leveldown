@@ -152,6 +152,65 @@
 
       <div class="body-wrap">
   
+    <article id="post-关于全局光照系统" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/26/关于全局光照系统/" class="article-date">
+  	<time datetime="2017-07-26T04:57:28.000Z" itemprop="datePublished">2017-07-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/26/关于全局光照系统/">关于全局光照系统</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.yupoo.com/photos/levelupjun/97310035/" title="xieshi2" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCFJwm0S/j5hgL.png" alt="xieshi2" width="1667" height="948" border="0"></a></p>
+<p>全局照明这项技术可以一定程度上解决 光照渲染中间接光缺失导致的阴影区域光照严重失真的问题。</p>
+<p>不过实时渲染的全局照明并不能真正去按照真正的光线追踪算法去实现，因为性能的开销的巨大。<br>所以实时渲染中的全局照明采用了 另一种策略来实现，这一技术就是在场景中布置 一个个 探头，然后计算每个探头范围内的光吸收总量，最后再通过插值分摊到 探头区域所覆盖的具体场景像素上。<br>这项技术的优点就是能很好的模拟 间接漫反射光的辐射效果，速度快，可实时运行，不需要烘培，不需要为制作模型特意展第二套lightmap的UV。<br>缺点是 存在漏光问题，精度欠缺，所以需要AO来弥补。</p>
+<p>心画软件内置 实时全局照明系统，并不需要烘培，直接就可以实时运行，<br>使用者可以随意开启。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+  
     <article id="post-国产游戏做不好的本因" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
