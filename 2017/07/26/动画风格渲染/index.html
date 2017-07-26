@@ -4,22 +4,23 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>关于全局光照系统 | 升级君</title>
+  <title>动画风格渲染 | 升级君</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="全局照明这项技术可以一定程度上解决 光照渲染中间接光缺失导致的阴影区域光照严重失真的问题。
-不过实时渲染的全局照明并不能真正去按照真正的光线追踪算法去实现，因为性能的开销的巨大。所以实时渲染中的全局照明采用了 另一种策略来实现，这一技术就是在场景中布置 一个个 探头，然后计算每个探头范围内的光吸收总量，最后再通过插值分摊到 探头区域所覆盖的具体场景像素上。这项技术的优点就是能很好的模拟 间接漫反射">
+  <meta name="description" content="动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。
+心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但 实时渲染器因为 性能需求 通常只能是4X4以内的采样粒度，所以心画软件必须在节省更多资源的前提下 做出最大化的效果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于全局光照系统">
-<meta property="og:url" content="http://yoursite.com/2017/07/26/关于全局光照系统/index.html">
+<meta property="og:title" content="动画风格渲染">
+<meta property="og:url" content="http://yoursite.com/2017/07/26/动画风格渲染/index.html">
 <meta property="og:site_name" content="升级君">
-<meta property="og:description" content="全局照明这项技术可以一定程度上解决 光照渲染中间接光缺失导致的阴影区域光照严重失真的问题。
-不过实时渲染的全局照明并不能真正去按照真正的光线追踪算法去实现，因为性能的开销的巨大。所以实时渲染中的全局照明采用了 另一种策略来实现，这一技术就是在场景中布置 一个个 探头，然后计算每个探头范围内的光吸收总量，最后再通过插值分摊到 探头区域所覆盖的具体场景像素上。这项技术的优点就是能很好的模拟 间接漫反射">
-<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GCFJwm0S/j5hgL.png">
-<meta property="og:updated_time" content="2017-07-26T05:11:20.123Z">
+<meta property="og:description" content="动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。
+心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但 实时渲染器因为 性能需求 通常只能是4X4以内的采样粒度，所以心画软件必须在节省更多资源的前提下 做出最大化的效果。">
+<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GCFZ5rOW/fIdxj.png">
+<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GCFJyPBC/jdCjr.png">
+<meta property="og:updated_time" content="2017-07-26T05:28:24.488Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于全局光照系统">
-<meta name="twitter:description" content="全局照明这项技术可以一定程度上解决 光照渲染中间接光缺失导致的阴影区域光照严重失真的问题。
-不过实时渲染的全局照明并不能真正去按照真正的光线追踪算法去实现，因为性能的开销的巨大。所以实时渲染中的全局照明采用了 另一种策略来实现，这一技术就是在场景中布置 一个个 探头，然后计算每个探头范围内的光吸收总量，最后再通过插值分摊到 探头区域所覆盖的具体场景像素上。这项技术的优点就是能很好的模拟 间接漫反射">
+<meta name="twitter:title" content="动画风格渲染">
+<meta name="twitter:description" content="动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。
+心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但 实时渲染器因为 性能需求 通常只能是4X4以内的采样粒度，所以心画软件必须在节省更多资源的前提下 做出最大化的效果。">
   
     <link rel="alternative" href="/atom.xml" title="升级君" type="application/atom+xml">
   
@@ -155,11 +156,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-关于全局光照系统" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-动画风格渲染" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/26/关于全局光照系统/" class="article-date">
-  	<time datetime="2017-07-26T04:57:28.000Z" itemprop="datePublished">2017-07-26</time>
+      <a href="/2017/07/26/动画风格渲染/" class="article-date">
+  	<time datetime="2017-07-26T05:15:47.000Z" itemprop="datePublished">2017-07-26</time>
 </a>
     </div>
   
@@ -172,7 +173,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于全局光照系统
+      动画风格渲染
     </h1>
   
 
@@ -188,10 +189,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://www.yupoo.com/photos/levelupjun/97310035/" title="xieshi2" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCFJwm0S/j5hgL.png" alt="xieshi2" width="1667" height="948" border="0"></a></p>
-<p>全局照明这项技术可以一定程度上解决 光照渲染中间接光缺失导致的阴影区域光照严重失真的问题。</p>
-<p>不过实时渲染的全局照明并不能真正去按照真正的光线追踪算法去实现，因为性能的开销的巨大。<br>所以实时渲染中的全局照明采用了 另一种策略来实现，这一技术就是在场景中布置 一个个 探头，然后计算每个探头范围内的光吸收总量，最后再通过插值分摊到 探头区域所覆盖的具体场景像素上。<br>这项技术的优点就是能很好的模拟 间接漫反射光的辐射效果，速度快，可实时运行，不需要烘培，不需要为制作模型特意展第二套lightmap的UV。<br>缺点是 存在漏光问题，精度欠缺，所以需要AO来弥补。</p>
-<p>心画软件内置 实时全局照明系统，并不需要烘培，直接就可以实时运行，<br>使用者可以随意开启。</p>
+        <p>动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。</p>
+<p>心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但 实时渲染器因为 性能需求 通常只能是4X4以内的采样粒度，<br>所以心画软件必须在节省更多资源的前提下 做出最大化的效果。</p>
+<p><a href="http://www.yupoo.com/photos/levelupjun/97310076/" title="6" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCFZ5rOW/fIdxj.png" alt="6" width="1900" height="981" border="0"></a><br><a href="http://www.yupoo.com/photos/levelupjun/97310036/" title="5" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCFJyPBC/jdCjr.png" alt="5" width="1902" height="981" border="0"></a></p>
 
       
     </div>
@@ -201,18 +201,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/26/动画风格渲染/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          动画风格渲染
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/13/国产游戏做不好的本因/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">国产游戏做不好的本因</div>
+    <a href="/2017/07/26/关于全局光照系统/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于全局光照系统</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -249,7 +240,7 @@
  <section id="comments">
 <div class="duoshuo">
    <!-- 多说评论框 start -->
-   <div class="ds-thread" data-thread-key="post-关于全局光照系统" data-title="关于全局光照系统" data-url="http://yoursite.com/2017/07/26/关于全局光照系统/"></div>
+   <div class="ds-thread" data-thread-key="post-动画风格渲染" data-title="动画风格渲染" data-url="http://yoursite.com/2017/07/26/动画风格渲染/"></div>
   <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
