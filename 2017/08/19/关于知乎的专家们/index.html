@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>动画风格渲染 | 升级君</title>
+  <title>关于知乎的&quot;专家&quot;们 | 升级君</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。
-心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，软件所用的outline方案是后处理方式，因为整个软件都是基于延迟着色(Deferred Shading)架构，所以用后处理方式显得十分方便。另外诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但">
+  <meta name="description" content="知乎这个网站和它的名字一样，之乎者也，这个地方的确也是夸夸其谈者和孔乙己们的乐园，
+翻了翻这个网站，发现现在的国内游戏技术圈流行起了讨论PBR和物理渲染，一群对图形技术是懂非懂的人，都以为只要给自己的项目上了PBR就可以让他们的游戏产品画质飞跃，这是多么天真稚嫩的想法。
+许多人一说到PBR就把和“基于物理渲染”关联在一起，然而所谓实时渲染领域直到今日也不曾存在过 真正的“基于物理渲染”这种东西，基">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动画风格渲染">
-<meta property="og:url" content="http://yoursite.com/2017/07/26/动画风格渲染/index.html">
+<meta property="og:title" content="关于知乎的"专家"们">
+<meta property="og:url" content="http://yoursite.com/2017/08/19/关于知乎的专家们/index.html">
 <meta property="og:site_name" content="升级君">
-<meta property="og:description" content="动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。
-心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，软件所用的outline方案是后处理方式，因为整个软件都是基于延迟着色(Deferred Shading)架构，所以用后处理方式显得十分方便。另外诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但">
-<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GCFJBjUG/1O5dE.png">
-<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GCFZ5rOW/fIdxj.png">
-<meta property="og:image" content="http://pic.yupoo.com/levelupjun/GCG9fMTP/4wYS0.png">
-<meta property="og:updated_time" content="2017-07-26T05:53:37.549Z">
+<meta property="og:description" content="知乎这个网站和它的名字一样，之乎者也，这个地方的确也是夸夸其谈者和孔乙己们的乐园，
+翻了翻这个网站，发现现在的国内游戏技术圈流行起了讨论PBR和物理渲染，一群对图形技术是懂非懂的人，都以为只要给自己的项目上了PBR就可以让他们的游戏产品画质飞跃，这是多么天真稚嫩的想法。
+许多人一说到PBR就把和“基于物理渲染”关联在一起，然而所谓实时渲染领域直到今日也不曾存在过 真正的“基于物理渲染”这种东西，基">
+<meta property="og:updated_time" content="2017-08-19T08:58:38.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动画风格渲染">
-<meta name="twitter:description" content="动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。
-心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，软件所用的outline方案是后处理方式，因为整个软件都是基于延迟着色(Deferred Shading)架构，所以用后处理方式显得十分方便。另外诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但">
+<meta name="twitter:title" content="关于知乎的"专家"们">
+<meta name="twitter:description" content="知乎这个网站和它的名字一样，之乎者也，这个地方的确也是夸夸其谈者和孔乙己们的乐园，
+翻了翻这个网站，发现现在的国内游戏技术圈流行起了讨论PBR和物理渲染，一群对图形技术是懂非懂的人，都以为只要给自己的项目上了PBR就可以让他们的游戏产品画质飞跃，这是多么天真稚嫩的想法。
+许多人一说到PBR就把和“基于物理渲染”关联在一起，然而所谓实时渲染领域直到今日也不曾存在过 真正的“基于物理渲染”这种东西，基">
   
     <link rel="alternative" href="/atom.xml" title="升级君" type="application/atom+xml">
   
@@ -157,11 +157,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-动画风格渲染" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-关于知乎的专家们" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/26/动画风格渲染/" class="article-date">
-  	<time datetime="2017-07-26T05:15:47.000Z" itemprop="datePublished">2017-07-26</time>
+      <a href="/2017/08/19/关于知乎的专家们/" class="article-date">
+  	<time datetime="2017-08-19T07:54:18.000Z" itemprop="datePublished">2017-08-19</time>
 </a>
     </div>
   
@@ -174,7 +174,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      动画风格渲染
+      关于知乎的&quot;专家&quot;们
     </h1>
   
 
@@ -190,9 +190,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>动画风格渲染技术可以说是老生常谈，虽然实现技术并不复杂，但能做出出色效果的游戏或者案例并不多。</p>
-<p>心画软件的动画渲染同样使用的是常规的outline+toon算法来实现，不过略有些差别，软件所用的outline方案是后处理方式，因为整个软件都是基于延迟着色(Deferred Shading)架构，所以用后处理方式显得十分方便。另外诸如vray这种离线渲染器可以以16*16的采样精度来处理每个像素，但 实时渲染器因为 性能需求 通常只能是4X4以内的采样粒度，<br>所以心画软件必须在节省更多资源的前提下 做出最大化的效果。</p>
-<p><a href="http://www.yupoo.com/photos/levelupjun/97310037/" title="7" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCFJBjUG/1O5dE.png" alt="7" width="1899" height="978" border="0"></a><br><a href="http://www.yupoo.com/photos/levelupjun/97310076/" title="6" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCFZ5rOW/fIdxj.png" alt="6" width="1900" height="981" border="0"></a><br><a href="http://www.yupoo.com/photos/levelupjun/97310108/" title="4" target="_blank" rel="external"><img src="http://pic.yupoo.com/levelupjun/GCG9fMTP/4wYS0.png" alt="4" width="1650" height="916" border="0"></a></p>
+        <p>知乎这个网站和它的名字一样，之乎者也，这个地方的确也是夸夸其谈者和孔乙己们的乐园，</p>
+<p>翻了翻这个网站，发现现在的国内游戏技术圈流行起了讨论PBR和物理渲染，一群对图形技术是懂非懂的人，都以为只要给自己的项目上了PBR就可以让他们的游戏产品画质飞跃，这是多么天真稚嫩的想法。</p>
+<p>许多人一说到PBR就把和“基于物理渲染”关联在一起，然而所谓实时渲染领域直到今日也不曾存在过 真正的“基于物理渲染”这种东西，基于物理渲染只存在于离线渲染领域，不过虚幻4这种把标准的光线追踪压缩在lightmap里的确可以很小一定程度上可以模拟，但也只是模拟，许多人其实都把游戏里的PBR与离线领域的基于物理渲染彻底混淆不清了。</p>
+<p>PBR概念的本意其实只是一种 规范，并不是一个算法也不是一种技术，而是为了制作接近真实材质的一种规范，这种规范可以让美术制作一种标准的纹理，程序再对光照公式做些调整，就可以让一种材质数据运用在不同的场景、照明和环境中，节省了传统美术因为场景照明的各种环境变化而带来的后期反复调整的时间。</p>
+<p>一个游戏渲染的好不好，实际上取决于相当多的因素，像素采样是否精确，渲染纹理是否有错误压缩，光照算法是否合理，间接光照是否有真正模拟，阴影细节是否足够，后期效果是否饱满，各种渲染算法编写是否巧妙等等。</p>
+<p>国内游戏行业的技术的“专家”乍一看挺多，然而真正把技术理解到位，并能实际做出合理质量游戏的人实际上却一直很少。<br>看看如今的国产游戏行业的现状, 粗糙不堪，品味和制作技术都同时落后世界一个时代,国内真要有那么多能做事的专家，国产游戏也不会是现在这个破样子了不是。</p>
+<p>国内游戏行业发展到现在一直都不缺 阿Q和孔乙己，缺的是真正能做出成成绩的人。<br>真的实干者都很少会在知乎这种地方长篇大论、夸夸其谈，因为越是实干派越会厌恶 装B这种行为，因为这是对他们认真做事的否定。</p>
+<p>在此，我把这篇文章送给知乎的那些 “专家”们,希望国内少点 之乎者也，多些 真正能做出成果的实践者。</p>
 
       
     </div>
@@ -202,18 +207,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/08/19/关于知乎的专家们/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于知乎的&quot;专家&quot;们
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/26/关于全局光照系统/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于全局光照系统</div>
+    <a href="/2017/07/26/动画风格渲染/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动画风格渲染</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -250,7 +246,7 @@
  <section id="comments">
 <div class="duoshuo">
    <!-- 多说评论框 start -->
-   <div class="ds-thread" data-thread-key="post-动画风格渲染" data-title="动画风格渲染" data-url="http://yoursite.com/2017/07/26/动画风格渲染/"></div>
+   <div class="ds-thread" data-thread-key="post-关于知乎的专家们" data-title="关于知乎的&quot;专家&quot;们" data-url="http://yoursite.com/2017/08/19/关于知乎的专家们/"></div>
   <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
